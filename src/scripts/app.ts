@@ -6,7 +6,7 @@ function iniciarApp() {
 
   setTimeout(() => {
     mostrarCategorias(selectCategorias);
-  }, 500);
+  }, 1000);
 }
 
 document.addEventListener("DOMContentLoaded", iniciarApp);
