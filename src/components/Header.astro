@@ -1,0 +1,24 @@
+---
+import { mainMenu } from "../data/mainMenu";
+---
+
+<header class="bg-red-700 text-red-50">
+  <div
+    class="container mx-auto flex flex-col xs:flex-row justify-between items-center gap-2 px-8 py-4"
+  >
+    <a href="/">
+      <p class="text-2xl font-bold text-center">Buscador Recetas</p>
+    </a>
+    <nav>
+      <ul class="flex gap-8">
+        {
+          mainMenu.map((el) => (
+            <li>
+              <a href={el.path}>{el.menu}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

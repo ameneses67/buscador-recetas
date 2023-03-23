@@ -1,0 +1,19 @@
+---
+import Header from "../components/Header.astro";
+import Head from "./Head.astro";
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <Head title={title} description={description} />
+  <body>
+    <Header />
+    <main>
+      <div class="conatiner mx-auto px-4 py-16 bg-slate-100 h-screen">
+        <slot />
+      </div>
+    </main>
+  </body>
+</html>
