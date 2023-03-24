@@ -1,4 +1,4 @@
-import { selectInput } from "../scripts/selectores";
+import { selectInput } from "./selectores";
 
 export function mostrarCategorias(categorias: string[]) {
   categorias.map((categoria) => {
