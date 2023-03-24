@@ -1,4 +1,6 @@
 import { recetario, recetasContenedor } from "./selectores";
+import MicroModal from "micromodal";
+import { seleccionarReceta } from "./seleccionarReceta";
 
 export function mostrarRecetas(recetas: []) {
   limpiarHTML(recetasContenedor);
@@ -53,11 +55,18 @@ export function mostrarRecetas(recetas: []) {
       "bg-red-700",
       "text-slate-50",
       "font-semibold",
-      "rounded-md"
+      "rounded-md",
+      "hover:bg-red-600",
+      "hover:shadow"
     );
-    recetaBtn.setAttribute("data-modal-target", "modal");
-    recetaBtn.setAttribute("data-modal-toggle", "modal");
+    recetaBtn.setAttribute("data-micromodal-trigger", "modal");
     recetaBtn.textContent = "Ver Receta";
+
+    recetaBtn.onclick = function () {
+      seleccionarReceta(idMeal);
+      console.log(idMeal);
+      recetaBtn.onclick = MicroModal.show("modal");
+    };
 
     // añadir elementos al cuerpo de la tarjeta
     recetaCardBody.appendChild(recetaTitulo);
@@ -71,6 +80,8 @@ export function mostrarRecetas(recetas: []) {
     recetasContenedor.appendChild(recetaCard);
   });
 }
+
+MicroModal.init();
 
 export function limpiarHTML(selector: HTMLElement) {
   while (selector.firstChild) {
