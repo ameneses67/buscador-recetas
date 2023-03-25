@@ -12,10 +12,6 @@ export const modalReceta = document.querySelector(
   "#modal-receta"
 ) as HTMLDivElement;
 
-export const cerrarModal = document.querySelector(
-  "#modal-cerrar"
-) as HTMLButtonElement;
-
 export const modalTitle = document.querySelector(
   "#modal-title"
 ) as HTMLHeadingElement;
@@ -28,6 +24,6 @@ export const modalButton = document.querySelector(
   "#modal-button"
 ) as HTMLButtonElement;
 
-export const modalFavorito = document.querySelector(
-  "#modal-favorito"
-) as HTMLButtonElement;
+export const modalFooter = document.querySelector(
+  "#modal-footer"
+) as HTMLElement;

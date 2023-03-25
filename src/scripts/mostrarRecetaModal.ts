@@ -1,10 +1,9 @@
 import { limpiarHTML } from "./mostrarRecetas";
-import { agregarFavorito } from "./agregarFavorito";
+import { agregarFavorito, existeStorage } from "./agregarFavorito";
 import {
-  cerrarModal,
   modalButton,
   modalContent,
-  modalFavorito,
+  modalFooter,
   modalReceta,
   modalTitle,
 } from "./selectores";
@@ -51,21 +50,59 @@ export function mostrarRecetaModal(receta: Ireceta) {
     }
   }
 
-  modalContent.appendChild(listGroup);
+  // añadir botón para agregar receta a favoritos
+  const btnFavorito = document.createElement("button");
+  btnFavorito.classList.add(
+    "w-full",
+    "bg-red-700",
+    "hover:bg-red-800",
+    "hover:shadow",
+    "text-semibold",
+    "text-red-50",
+    "p-2",
+    "rounded-md"
+  );
+  btnFavorito.textContent = "Guardar Favorito";
 
   // localstorage
-  modalFavorito.addEventListener("click", () => {
+  btnFavorito.onclick = function () {
+    if (existeStorage(idMeal)) {
+      return;
+    }
+
     agregarFavorito(receta);
-  });
+  };
+
+  // añadir botón para cerrar el modal
+  const btnCerrar = document.createElement("button");
+  btnCerrar.classList.add(
+    "w-full",
+    "bg-stone-700",
+    "hover:bg-stone-800",
+    "hover:shadow",
+    "text-semibold",
+    "text-stone-50",
+    "p-2",
+    "rounded-md"
+  );
+  btnCerrar.textContent = "Cerrar";
+  btnCerrar.onclick = function () {
+    cerrarModal();
+  };
+
+  limpiarHTML(modalFooter);
+
+  modalContent.appendChild(listGroup);
+  modalFooter.appendChild(btnFavorito);
+  modalFooter.appendChild(btnCerrar);
 }
 
 // cerrar modal
-cerrarModal.addEventListener("click", () => {
+function cerrarModal() {
   modalReceta.classList.toggle("flex");
   modalReceta.classList.toggle("hidden");
-});
+}
 
 modalButton.addEventListener("click", () => {
-  modalReceta.classList.toggle("flex");
-  modalReceta.classList.toggle("hidden");
+  cerrarModal();
 });
