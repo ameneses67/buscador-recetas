@@ -1,8 +1,10 @@
 import { limpiarHTML } from "./mostrarRecetas";
+import { agregarFavorito } from "./agregarFavorito";
 import {
   cerrarModal,
   modalButton,
   modalContent,
+  modalFavorito,
   modalReceta,
   modalTitle,
 } from "./selectores";
@@ -30,7 +32,7 @@ export function mostrarRecetaModal(receta: Ireceta) {
 
   // añadir ingredientes y cantidades
   const listGroup = document.createElement("ul") as HTMLUListElement;
-  for (let i = 1; i <= 20; i++) {
+  for (let i: number = 1; i <= 20; i++) {
     if (receta[`strIngredient${i}`]) {
       const ingrediente = receta[`strIngredient${i}`];
       const cantidad = receta[`strMeasure${i}`];
@@ -50,8 +52,14 @@ export function mostrarRecetaModal(receta: Ireceta) {
   }
 
   modalContent.appendChild(listGroup);
+
+  // localstorage
+  modalFavorito.addEventListener("click", () => {
+    agregarFavorito(receta);
+  });
 }
 
+// cerrar modal
 cerrarModal.addEventListener("click", () => {
   modalReceta.classList.toggle("flex");
   modalReceta.classList.toggle("hidden");

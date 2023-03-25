@@ -27,3 +27,7 @@ export const modalContent = document.querySelector(
 export const modalButton = document.querySelector(
   "#modal-button"
 ) as HTMLButtonElement;
+
+export const modalFavorito = document.querySelector(
+  "#modal-favorito"
+) as HTMLButtonElement;

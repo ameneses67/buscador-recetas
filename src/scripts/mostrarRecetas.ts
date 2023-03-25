@@ -55,7 +55,7 @@ export function mostrarRecetas(recetas: []) {
       "text-slate-50",
       "font-semibold",
       "rounded-md",
-      "hover:bg-red-600",
+      "hover:bg-red-800",
       "hover:shadow"
     );
     recetaBtn.textContent = "Ver Receta";
