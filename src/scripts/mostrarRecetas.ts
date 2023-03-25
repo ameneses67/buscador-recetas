@@ -1,5 +1,4 @@
-import { recetario, recetasContenedor } from "./selectores";
-import MicroModal from "micromodal";
+import { modalReceta, recetario, recetasContenedor } from "./selectores";
 import { seleccionarReceta } from "./seleccionarReceta";
 
 export function mostrarRecetas(recetas: []) {
@@ -59,13 +58,12 @@ export function mostrarRecetas(recetas: []) {
       "hover:bg-red-600",
       "hover:shadow"
     );
-    recetaBtn.setAttribute("data-micromodal-trigger", "modal");
     recetaBtn.textContent = "Ver Receta";
 
     recetaBtn.onclick = function () {
+      modalReceta.classList.toggle("flex");
+      modalReceta.classList.toggle("hidden");
       seleccionarReceta(idMeal);
-      console.log(idMeal);
-      recetaBtn.onclick = MicroModal.show("modal");
     };
 
     // añadir elementos al cuerpo de la tarjeta
@@ -80,8 +78,6 @@ export function mostrarRecetas(recetas: []) {
     recetasContenedor.appendChild(recetaCard);
   });
 }
-
-MicroModal.init();
 
 export function limpiarHTML(selector: HTMLElement) {
   while (selector.firstChild) {

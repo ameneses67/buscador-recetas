@@ -1,15 +1,36 @@
 ---
 ---
 
-<div id="modal" aria-hidden="true">
-  <div tabindex="-1" data-micromodal-close>
-    <div role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <header>
-        <h2 id="modal-1-title">Modal Title</h2>
-        <button aria-label="Close modal" data-micromodal-close></button>
-      </header>
-
-      <div id="modal-content">Modal Content</div>
-    </div>
+<section
+  id="modal-receta"
+  class="bg-black/60 fixed inset-0 justify-center items-center hidden px-4"
+>
+  <div
+    class="container mx-auto my-8 bg-slate-100 rounded-md max-w-md max-h-[95vh] px-4 xs:px-8 py-8 overflow-y-auto"
+  >
+    <header
+      class="flex justify-between items-center gap-4 border-b border-b-gray-200 mb-8 py-4"
+    >
+      <h2 class="text-3xl font-bold" id="modal-title"></h2>
+      <button
+        id="modal-button"
+        class="text-lg text-gray-400 border border-gray-300 rounded-md font-thin font-sans px-3 py-1"
+        >X</button
+      >
+    </header>
+    <div id="modal-content"></div>
+    <footer
+      class="flex flex-col items-center gap-4 xs:flex-row xs:justify-between mt-8"
+    >
+      <button
+        class="w-full bg-red-700 hover:bg-red-800 hover:shadow text-semibold text-white p-2 rounded-md"
+        >Guardar Favorito</button
+      >
+      <button
+        id="modal-cerrar"
+        class="w-full bg-stone-700 hover:bg-stone-800 hover:shadow text-semibold text-white p-2 rounded-md"
+        >Cerrar</button
+      >
+    </footer>
   </div>
-</div>
+</section>
