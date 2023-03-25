@@ -7,6 +7,7 @@ import {
   modalReceta,
   modalTitle,
 } from "./selectores";
+import { eliminarFavorito } from "./eliminarFavorito";
 
 export interface Ireceta {
   idMeal: string;
@@ -62,16 +63,23 @@ export function mostrarRecetaModal(receta: Ireceta) {
     "p-2",
     "rounded-md"
   );
-  btnFavorito.textContent = "Guardar Favorito";
+  btnFavorito.textContent = existeStorage(idMeal)
+    ? "Eliminar Favorito"
+    : "Guardar Favorito";
 
-  // localstorage
+  // añadir favorito a localstorage
   btnFavorito.onclick = function () {
     if (existeStorage(idMeal)) {
+      eliminarFavorito(idMeal);
+      btnFavorito.textContent = "Guardar Favorito";
       return;
     }
 
     agregarFavorito(receta);
+    btnFavorito.textContent = "Eliminar Favorito";
   };
+
+  // eliminar favorito de localstorage
 
   // añadir botón para cerrar el modal
   const btnCerrar = document.createElement("button");
