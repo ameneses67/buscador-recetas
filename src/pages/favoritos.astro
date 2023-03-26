@@ -1,4 +1,7 @@
 ---
+import Modal from "../components/Modal.astro";
+import Recetas from "../components/Recetas.astro";
+import Toast from "../components/Toast.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
 const title = "Recetas Favoritas";
@@ -7,4 +10,9 @@ const description = "Lista de tus recetas favoritas";
 
 <MainLayout title={title} description={description}>
   <h1 class="font-bold text-3xl text-center mb-8">{title}</h1>
+  <Recetas />
+  <Modal />
+  <Toast />
 </MainLayout>
+
+<script src="../scripts/mostrarFavoritos"></script>

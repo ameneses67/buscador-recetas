@@ -27,3 +27,13 @@ export const modalButton = document.querySelector(
 export const modalFooter = document.querySelector(
   "#modal-footer"
 ) as HTMLElement;
+
+export const toast = document.querySelector("#toast") as HTMLElement;
+
+export const toastBody = document.querySelector(
+  "#toast-body"
+) as HTMLDivElement;
+
+export const toastHeader = document.querySelector(
+  "#toast-header"
+) as HTMLHeadingElement;

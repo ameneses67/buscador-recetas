@@ -1,16 +1,19 @@
 import { modalReceta, recetario, recetasContenedor } from "./selectores";
 import { seleccionarReceta } from "./seleccionarReceta";
+import type { Ireceta } from "./mostrarRecetaModal";
 
-export function mostrarRecetas(recetas: []) {
+export function mostrarRecetas(recetas: Ireceta[]) {
   limpiarHTML(recetasContenedor);
 
-  const heading = document.createElement("h2");
-  heading.classList.add("text-center", "font-bold", "text-2xl", "mb-8");
-  heading.textContent = recetas.length
-    ? "Disfruta tus recetas"
-    : "No se encontraron resultados";
+  if (window.location.pathname !== "/favoritos/") {
+    const heading = document.createElement("h2");
+    heading.classList.add("text-center", "font-bold", "text-2xl", "mb-8");
+    heading.textContent = recetas.length
+      ? "Disfruta tus recetas"
+      : "No se encontraron resultados";
 
-  recetario.insertBefore(heading, recetasContenedor);
+    recetario.insertBefore(heading, recetasContenedor);
+  }
 
   recetas.forEach((receta) => {
     const { idMeal, strMeal, strMealThumb } = receta;
@@ -28,7 +31,9 @@ export function mostrarRecetas(recetas: []) {
       "hover:shadow-lg",
       "transition",
       "duration-300",
-      "ease-in-out"
+      "ease-in-out",
+      "flex",
+      "flex-col"
     );
 
     // crear imagen
@@ -39,7 +44,13 @@ export function mostrarRecetas(recetas: []) {
 
     // crear cuerpo tarjeta
     const recetaCardBody = document.createElement("div");
-    recetaCardBody.classList.add("p-4");
+    recetaCardBody.classList.add(
+      "p-4",
+      "grow",
+      "flex",
+      "justify-between",
+      "flex-col"
+    );
 
     // crear nombre receta
     const recetaTitulo = document.createElement("h3");
